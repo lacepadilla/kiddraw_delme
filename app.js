@@ -1,5 +1,7 @@
 global.__base = __dirname + '/';
 
+require('dotenv').config();
+
 var
     use_https     = true,
     argv          = require('minimist')(process.argv.slice(2)),
