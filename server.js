@@ -154,6 +154,10 @@ function markAnnotation(collection, gameid, sketchid) {
 
 mongoConnectWithRetry(2000, (connection) => {
 
+    app.get('/', (req, res) => {
+        res.sendFile(__dirname + '/index.html')
+    })
+
     app.get('/*', (req, res) => {
         serveFile(req, res);
     });
