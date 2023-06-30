@@ -65,7 +65,7 @@ var UUID = function () {
 };
 
 function sendSingleStim(socket, data) {
-    sendPostRequest('/db/getsinglestim', {
+    sendPostRequest(`${process.env.API_URL}/db/getsinglestim`, {
         json: {
             dbname: 'stimuli',
             colname: 'photodraw2',
@@ -87,7 +87,7 @@ function sendSingleStim(socket, data) {
 
 var writeDataToMongo = function (data) {
     sendPostRequest(
-        '/db/insert',
+        `${process.env.API_URL}/db/insert`,
         { json: data },
         (error, res, body) => {
             if (!error && res.statusCode === 200) {
@@ -280,7 +280,7 @@ mongoConnectWithRetry(2000, (connection) => {
         io = require('socket.io')(server);
     }
 
-    
+
     io.on('connection', function (socket) {
 
         // write data to db upon getting current data
